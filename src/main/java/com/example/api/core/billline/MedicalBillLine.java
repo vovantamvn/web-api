@@ -1,24 +1,17 @@
 package com.example.api.core.billline;
 
+import com.example.api.core.drug.Drug;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 
 @Entity
+@Setter
+@Getter
 public class MedicalBillLine extends BillLine {
-    private String drug;
-
-    public MedicalBillLine() {
-    }
-
-    public MedicalBillLine(long id, double price, String drug) {
-        super(id, price);
-        this.drug = drug;
-    }
-
-    public String getDrug() {
-        return drug;
-    }
-
-    public void setDrug(String drug) {
-        this.drug = drug;
-    }
+    @OneToOne(fetch = FetchType.EAGER)
+    private Drug drug;
 }
