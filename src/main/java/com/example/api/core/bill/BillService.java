@@ -26,7 +26,6 @@ public class BillService {
     }
 
     public void addBill(Bill bill) {
-        // remove id
         bill.setId(null);
         billRepository.save(bill);
     }

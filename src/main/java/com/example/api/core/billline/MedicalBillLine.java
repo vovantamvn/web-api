@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 @Getter
 public class MedicalBillLine extends BillLine {
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private Drug drug;
 }

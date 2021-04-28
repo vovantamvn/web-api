@@ -26,9 +26,9 @@ public class BillLineService {
         if (repository.existsById(id)) {
             billLine.setId(id);
             repository.save(billLine);
+        } else {
+            throw new ResourceNotFound();
         }
-
-        throw new ResourceNotFound();
     }
 
     public void addBillLine(BillLine billLine) {
