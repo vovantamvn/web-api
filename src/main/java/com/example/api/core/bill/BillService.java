@@ -1,7 +1,5 @@
 package com.example.api.core.bill;
 
-import com.example.api.core.bill.Bill;
-import com.example.api.core.bill.BillRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +27,7 @@ public class BillService {
 
     public void addBill(Bill bill) {
         // remove id
-        bill.setId(0);
+        bill.setId(null);
         billRepository.save(bill);
     }
 

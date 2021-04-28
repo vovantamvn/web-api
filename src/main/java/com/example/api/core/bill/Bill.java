@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Locale;
 
 @Entity
@@ -13,13 +14,12 @@ import java.util.Locale;
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
-
     private Patient patient;
 
     private double totalPrice;
 
-    private Locale createDate;
+    private LocalDate createDate;
 }

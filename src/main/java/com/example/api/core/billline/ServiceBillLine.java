@@ -9,5 +9,6 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 public class ServiceBillLine extends BillLine {
+
     private String serviceName;
 }

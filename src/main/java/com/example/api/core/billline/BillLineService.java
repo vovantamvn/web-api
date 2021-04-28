@@ -2,16 +2,23 @@ package com.example.api.core.billline;
 
 import com.example.api.exception.ResourceNotFound;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+@Service
 @RequiredArgsConstructor
 public class BillLineService {
+
     private final BillLineRepository repository;
 
     public BillLine getBillLine(long id) {
-        if (repository.existsById(id)) {
-            return repository.getOne(id);
-        }
+        Optional<BillLine> opt = repository.findById(id);
 
+        if (opt.isPresent()) {
+            return opt.get();
+        }
         throw new ResourceNotFound();
     }
 
@@ -25,7 +32,7 @@ public class BillLineService {
     }
 
     public void addBillLine(BillLine billLine) {
-        billLine.setId(0);
+        billLine.setId(null);
         repository.save(billLine);
     }
 
@@ -35,5 +42,9 @@ public class BillLineService {
         } else {
             throw new ResourceNotFound();
         }
+    }
+
+    public List<BillLine> getAll() {
+        return repository.findAll();
     }
 }

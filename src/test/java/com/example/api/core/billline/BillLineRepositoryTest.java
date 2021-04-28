@@ -25,12 +25,15 @@ class BillLineRepositoryTest {
         bill.setPrice(50f);
         bill.setDrug(null);
 
+        repository.save(bill);
+
         // Act
-        BillLine result = repository.save(bill);
+        BillLine result = repository.findById(bill.getId())
+                .orElseThrow();
 
         // Assert
-        assertTrue(result instanceof MedicalBillLine);
         assertEquals(50f, result.getPrice());
+        assertTrue(result instanceof MedicalBillLine);
     }
 
     @Test
@@ -40,12 +43,15 @@ class BillLineRepositoryTest {
         bill.setPrice(50f);
         bill.setServiceName("Name");
 
+        repository.save(bill);
+
         // Act
-        BillLine result = repository.save(bill);
+        BillLine result = repository.findById(bill.getId())
+                .orElseThrow();
 
         // Assert
-        assertTrue(result instanceof ServiceBillLine);
         assertEquals(50f, result.getPrice());
+        assertEquals(true, result instanceof ServiceBillLine);
         assertEquals("Name", ((ServiceBillLine) result).getServiceName());
     }
 }

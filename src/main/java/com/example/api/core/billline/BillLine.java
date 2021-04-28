@@ -13,7 +13,7 @@ import javax.persistence.*;
 public abstract class BillLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected long id;
+    protected Long id;
 
     protected double price;
 }
