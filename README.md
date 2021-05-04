@@ -21,3 +21,5 @@ spring:
 ```
 
 - Run command( requite install maven in your system) `mvn spring-boot:run`
+
+- View API: http://localhost:8080/swagger-ui.html
